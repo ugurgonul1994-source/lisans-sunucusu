@@ -1,9 +1,12 @@
 from flask import Flask, request, jsonify
 import sqlite3
+import os
 from datetime import datetime
 
 app = Flask(__name__)
-DB_NAME = "licenses.db"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_NAME = os.path.join(BASE_DIR, "licenses.db")
 
 def init_db():
     conn = sqlite3.connect(DB_NAME)
